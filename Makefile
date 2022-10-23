@@ -1,4 +1,5 @@
-all:
-	GOOS=js GOARCH=wasm go build -o  ./test.wasm
-serve:
-	python3 -m http.server
+serve: compile
+	go run server.go
+
+compile: main.go
+	GOARCH=wasm GOOS=js go build -o test.wasm main.go
